@@ -13,7 +13,7 @@ namespace WindowsFormsBus
 {
     public partial class FormBus : Form
     {
-        private Bus bus;
+        private ITransport bus;
 
         /// <summary>
         /// Конструктор
@@ -33,15 +33,27 @@ namespace WindowsFormsBus
             pictureBoxBus.Image = bmp;
         }
         /// <summary>
-        /// Обработка нажатия кнопки "Создать"
+        /// Обработка нажатия кнопки "Создать автобус"
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void buttonCreate_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
+            bus = new Busik(rnd.Next(150, 200), rnd.Next(5000, 10000), Color.Red);
+            bus.SetPosition(rnd.Next(10, 150), rnd.Next(10, 150), pictureBoxBus.Width, pictureBoxBus.Height);
+            Draw();
+        }
+           /// <summary>
+        /// Обработка нажатия кнопки "Создать автобус c гармошкой"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonCreateBus_Click_1(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
             bus = new Bus(rnd.Next(100, 150), rnd.Next(10000, 15000), Color.Red, Color.Black, true, true);
-            bus.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxBus.Width, pictureBoxBus.Height);
+            bus.SetPosition(rnd.Next(10, 150), rnd.Next(10, 150), pictureBoxBus.Width, pictureBoxBus.Height);
             Draw();
         }
         /// <summary>
@@ -70,5 +82,6 @@ namespace WindowsFormsBus
             }
             Draw();
         }
+  
     }
 }

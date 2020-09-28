@@ -34,6 +34,7 @@
             this.buttonUp = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
             this.buttonDown = new System.Windows.Forms.Button();
+            this.buttonCreateBus = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBus)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,9 +52,9 @@
             // 
             this.buttonCreate.Location = new System.Drawing.Point(12, 12);
             this.buttonCreate.Name = "buttonCreate";
-            this.buttonCreate.Size = new System.Drawing.Size(91, 32);
+            this.buttonCreate.Size = new System.Drawing.Size(321, 30);
             this.buttonCreate.TabIndex = 1;
-            this.buttonCreate.Text = "Создать";
+            this.buttonCreate.Text = "Создать автобус";
             this.buttonCreate.UseVisualStyleBackColor = true;
             this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
             // 
@@ -105,11 +106,22 @@
             this.buttonDown.UseVisualStyleBackColor = true;
             this.buttonDown.Click += new System.EventHandler(this.buttonMove_Click);
             // 
+            // buttonCreateBus
+            // 
+            this.buttonCreateBus.Location = new System.Drawing.Point(354, 12);
+            this.buttonCreateBus.Name = "buttonCreateBus";
+            this.buttonCreateBus.Size = new System.Drawing.Size(380, 30);
+            this.buttonCreateBus.TabIndex = 6;
+            this.buttonCreateBus.Text = "Создать автобус с гармошкой";
+            this.buttonCreateBus.UseVisualStyleBackColor = true;
+            this.buttonCreateBus.Click += new System.EventHandler(this.buttonCreateBus_Click_1);
+            // 
             // FormBus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(969, 568);
+            this.Controls.Add(this.buttonCreateBus);
             this.Controls.Add(this.buttonDown);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonUp);
@@ -132,6 +144,7 @@
         private System.Windows.Forms.Button buttonUp;
         private System.Windows.Forms.Button buttonRight;
         private System.Windows.Forms.Button buttonDown;
+        private System.Windows.Forms.Button buttonCreateBus;
     }
 }
 
