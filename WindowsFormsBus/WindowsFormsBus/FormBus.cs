@@ -82,6 +82,5 @@ namespace WindowsFormsBus
             }
             Draw();
         }
-  
     }
 }
