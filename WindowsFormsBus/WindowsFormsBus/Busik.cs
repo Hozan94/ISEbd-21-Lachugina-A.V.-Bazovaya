@@ -98,35 +98,33 @@ namespace WindowsFormsBus
             g.FillEllipse(black, _startPosX + 12, _startPosY + 8, 11, 11);
 
             //отрисуем кузов автобуса
-            g.FillRectangle(br, _startPosX + 29, _startPosY + 5, 164, 53);
+            g.FillRectangle(br, _startPosX + 29, _startPosY + 5, 90, 53);
 
             //отрисуем колеса
             //колесо впереди
             g.DrawEllipse(os, _startPosX + 45, _startPosY + 50, 17, 17);
             g.FillEllipse(white, _startPosX + 47, _startPosY + 52, 13, 13);
-            //колесо сзади
-            g.DrawEllipse(os, _startPosX + 148, _startPosY + 50, 17, 17);
-            g.FillEllipse(white, _startPosX + 150, _startPosY + 52, 13, 13);
 
-            //отрисуем люки
+            //колесо середина
+            g.DrawEllipse(os, _startPosX + 84, _startPosY + 50, 17, 17);
+            g.FillEllipse(white, _startPosX + 86, _startPosY + 52, 13, 13);
+
             //левый люк
             g.DrawRectangle(pen, _startPosX + 56, _startPosY, 29, 6);
             g.FillRectangle(white, _startPosX + 57, _startPosY + 1, 28, 5);
-            //правый люк
-            g.DrawRectangle(pen, _startPosX + 140, _startPosY, 29, 6);
-            g.FillRectangle(white, _startPosX + 141, _startPosY + 1, 28, 5);
 
             //отрисуем окно
-            g.FillRectangle(black, _startPosX + 29, _startPosY + 13, 163, 32);
+            g.FillRectangle(black, _startPosX + 29, _startPosY + 13, 88, 32);
+
             //окно водителя
             g.FillRectangle(oknoVod, _startPosX + 29, _startPosY + 15, 14, 28);
+
             //окно всего автобуса
-            g.FillRectangle(okno, _startPosX + 46, _startPosY + 15, 145, 28);
+            g.FillRectangle(okno, _startPosX + 46, _startPosY + 15, 65, 28);
+
             //разделения окон
             g.DrawLine(pen, _startPosX + 69, _startPosY + 15, _startPosX + 69, _startPosY + 44);
             g.DrawLine(pen, _startPosX + 90, _startPosY + 15, _startPosX + 90, _startPosY + 44);
-            g.DrawLine(pen, _startPosX + 144, _startPosY + 15, _startPosX + 144, _startPosY + 44);
-            g.DrawLine(pen, _startPosX + 170, _startPosY + 15, _startPosX + 170, _startPosY + 44);
 
             //отрисуем фару
             g.FillRectangle(fara, _startPosX + 30, _startPosY + 48, 9, 5);
