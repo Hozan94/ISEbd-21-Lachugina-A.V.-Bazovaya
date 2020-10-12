@@ -50,7 +50,7 @@ namespace WindowsFormsBus
             Pen os = new Pen(Color.Black, 4);
             Pen luke = new Pen(Color.Black);
             Brush white = new SolidBrush(Color.White);     
-            Brush red = new SolidBrush(Color.Red);
+            Brush red = new SolidBrush(MainColor);
             Brush okno = new SolidBrush(Color.DarkGray);
             
             base.DrawTransport(g);

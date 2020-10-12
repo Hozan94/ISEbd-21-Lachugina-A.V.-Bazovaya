@@ -22,6 +22,11 @@ namespace WindowsFormsBus
         {
             InitializeComponent();
         }
+        public void SetBus(ITransport bus)
+        {
+            this.bus = bus;
+            Draw();
+        }
         /// <summary>
         /// Метод отрисовки машины
         /// </summary>
