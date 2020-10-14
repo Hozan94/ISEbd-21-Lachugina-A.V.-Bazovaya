@@ -31,7 +31,7 @@ namespace WindowsFormsBus
             ColorDialog dialog = new ColorDialog();
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                var bus = new Busik(100, 1000, dialog.Color);
+                var bus = new Bus(100, 1000, dialog.Color);
                 if (parking + bus)
                 {
                     Draw();
@@ -51,7 +51,7 @@ namespace WindowsFormsBus
                 ColorDialog dialogDop = new ColorDialog();
                 if (dialogDop.ShowDialog() == DialogResult.OK)
                 {
-                    var bus = new Bus(100, 10000, dialog.Color, dialogDop.Color, true, true);
+                    var bus = new BusGarm(100, 10000, dialog.Color, dialogDop.Color, true, true);
                     if (parking + bus)
                     {
                         Draw();
