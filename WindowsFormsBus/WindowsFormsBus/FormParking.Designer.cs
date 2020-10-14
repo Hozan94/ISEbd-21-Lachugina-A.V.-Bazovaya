@@ -32,9 +32,9 @@
             this.buttonSetBus = new System.Windows.Forms.Button();
             this.buttonSetGarmBus = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.maskedTextBoxNumber = new System.Windows.Forms.MaskedTextBox();
             this.buttonTakeBus = new System.Windows.Forms.Button();
+            this.maskedTextBoxNumber = new System.Windows.Forms.MaskedTextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -44,13 +44,13 @@
             this.pictureBoxParking.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBoxParking.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxParking.Name = "pictureBoxParking";
-            this.pictureBoxParking.Size = new System.Drawing.Size(1369, 601);
+            this.pictureBoxParking.Size = new System.Drawing.Size(1141, 601);
             this.pictureBoxParking.TabIndex = 0;
             this.pictureBoxParking.TabStop = false;
             // 
             // buttonSetBus
             // 
-            this.buttonSetBus.Location = new System.Drawing.Point(1383, 39);
+            this.buttonSetBus.Location = new System.Drawing.Point(1203, 21);
             this.buttonSetBus.Name = "buttonSetBus";
             this.buttonSetBus.Size = new System.Drawing.Size(120, 51);
             this.buttonSetBus.TabIndex = 1;
@@ -60,7 +60,7 @@
             // 
             // buttonSetGarmBus
             // 
-            this.buttonSetGarmBus.Location = new System.Drawing.Point(1383, 96);
+            this.buttonSetGarmBus.Location = new System.Drawing.Point(1203, 78);
             this.buttonSetGarmBus.Name = "buttonSetGarmBus";
             this.buttonSetGarmBus.Size = new System.Drawing.Size(120, 64);
             this.buttonSetGarmBus.TabIndex = 2;
@@ -73,28 +73,12 @@
             this.groupBox1.Controls.Add(this.buttonTakeBus);
             this.groupBox1.Controls.Add(this.maskedTextBoxNumber);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(1383, 166);
+            this.groupBox1.Location = new System.Drawing.Point(1203, 148);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(150, 109);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Забрать автобус";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 36);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Место:";
-            // 
-            // maskedTextBoxNumber
-            // 
-            this.maskedTextBoxNumber.Location = new System.Drawing.Point(73, 36);
-            this.maskedTextBoxNumber.Name = "maskedTextBoxNumber";
-            this.maskedTextBoxNumber.Size = new System.Drawing.Size(47, 22);
-            this.maskedTextBoxNumber.TabIndex = 1;
             // 
             // buttonTakeBus
             // 
@@ -106,11 +90,27 @@
             this.buttonTakeBus.UseVisualStyleBackColor = true;
             this.buttonTakeBus.Click += new System.EventHandler(this.buttonTakeBus_Click_1);
             // 
+            // maskedTextBoxNumber
+            // 
+            this.maskedTextBoxNumber.Location = new System.Drawing.Point(73, 36);
+            this.maskedTextBoxNumber.Name = "maskedTextBoxNumber";
+            this.maskedTextBoxNumber.Size = new System.Drawing.Size(47, 22);
+            this.maskedTextBoxNumber.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(14, 36);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Место:";
+            // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1575, 601);
+            this.ClientSize = new System.Drawing.Size(1368, 601);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonSetGarmBus);
             this.Controls.Add(this.buttonSetBus);
