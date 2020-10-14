@@ -40,7 +40,7 @@ namespace WindowsFormsBus
         private void buttonCreate_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            bus = new Busik(rnd.Next(150, 200), rnd.Next(5000, 10000), Color.Red);
+            bus = new Bus(rnd.Next(150, 200), rnd.Next(5000, 10000), Color.Red);
             bus.SetPosition(rnd.Next(10, 150), rnd.Next(10, 150), pictureBoxBus.Width, pictureBoxBus.Height);
             Draw();
         }
@@ -52,7 +52,7 @@ namespace WindowsFormsBus
         private void buttonCreateBus_Click_1(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            bus = new Bus(rnd.Next(100, 150), rnd.Next(10000, 15000), Color.Red, Color.Black, true, true);
+            bus = new BusGarm(rnd.Next(100, 150), rnd.Next(10000, 15000), Color.Red, Color.Black, true, true);
             bus.SetPosition(rnd.Next(10, 150), rnd.Next(10, 150), pictureBoxBus.Width, pictureBoxBus.Height);
             Draw();
         }

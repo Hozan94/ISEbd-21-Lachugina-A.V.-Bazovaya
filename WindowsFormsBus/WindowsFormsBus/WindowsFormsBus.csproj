@@ -46,8 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusGarm.cs" />
     <Compile Include="Bus.cs" />
-    <Compile Include="Busik.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="EasyBus.cs" />
     <Compile Include="FormBus.cs">
