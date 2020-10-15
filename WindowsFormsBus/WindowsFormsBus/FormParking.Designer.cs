@@ -35,6 +35,11 @@
             this.buttonTakeBus = new System.Windows.Forms.Button();
             this.maskedTextBoxNumber = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.listBoxAutovoksal = new System.Windows.Forms.ListBox();
+            this.Autovoksal = new System.Windows.Forms.Label();
+            this.textBoxAutovoksalName = new System.Windows.Forms.TextBox();
+            this.buttonAddAutovoksal = new System.Windows.Forms.Button();
+            this.buttonDeleteAutovoksal = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -50,9 +55,9 @@
             // 
             // buttonSetBus
             // 
-            this.buttonSetBus.Location = new System.Drawing.Point(1203, 21);
+            this.buttonSetBus.Location = new System.Drawing.Point(1200, 305);
             this.buttonSetBus.Name = "buttonSetBus";
-            this.buttonSetBus.Size = new System.Drawing.Size(120, 51);
+            this.buttonSetBus.Size = new System.Drawing.Size(150, 51);
             this.buttonSetBus.TabIndex = 1;
             this.buttonSetBus.Text = "Припарковать автобус";
             this.buttonSetBus.UseVisualStyleBackColor = true;
@@ -60,9 +65,9 @@
             // 
             // buttonSetGarmBus
             // 
-            this.buttonSetGarmBus.Location = new System.Drawing.Point(1203, 78);
+            this.buttonSetGarmBus.Location = new System.Drawing.Point(1200, 362);
             this.buttonSetGarmBus.Name = "buttonSetGarmBus";
-            this.buttonSetGarmBus.Size = new System.Drawing.Size(120, 64);
+            this.buttonSetGarmBus.Size = new System.Drawing.Size(150, 64);
             this.buttonSetGarmBus.TabIndex = 2;
             this.buttonSetGarmBus.Text = "Припарковать автобус с гармошкой";
             this.buttonSetGarmBus.UseVisualStyleBackColor = true;
@@ -73,7 +78,7 @@
             this.groupBox1.Controls.Add(this.buttonTakeBus);
             this.groupBox1.Controls.Add(this.maskedTextBoxNumber);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(1203, 148);
+            this.groupBox1.Location = new System.Drawing.Point(1200, 450);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(150, 109);
             this.groupBox1.TabIndex = 3;
@@ -106,11 +111,62 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Место:";
             // 
+            // listBoxAutovoksal
+            // 
+            this.listBoxAutovoksal.FormattingEnabled = true;
+            this.listBoxAutovoksal.ItemHeight = 16;
+            this.listBoxAutovoksal.Location = new System.Drawing.Point(1203, 125);
+            this.listBoxAutovoksal.Name = "listBoxAutovoksal";
+            this.listBoxAutovoksal.Size = new System.Drawing.Size(150, 116);
+            this.listBoxAutovoksal.TabIndex = 4;
+            this.listBoxAutovoksal.Click += new System.EventHandler(this.listBoxAutovoksal_SelectedIndexChanged);
+            // 
+            // Autovoksal
+            // 
+            this.Autovoksal.AutoSize = true;
+            this.Autovoksal.Location = new System.Drawing.Point(1239, 21);
+            this.Autovoksal.Name = "Autovoksal";
+            this.Autovoksal.Size = new System.Drawing.Size(84, 17);
+            this.Autovoksal.TabIndex = 5;
+            this.Autovoksal.Text = "Автовокзал";
+            // 
+            // textBoxAutovoksalName
+            // 
+            this.textBoxAutovoksalName.Location = new System.Drawing.Point(1203, 41);
+            this.textBoxAutovoksalName.Name = "textBoxAutovoksalName";
+            this.textBoxAutovoksalName.Size = new System.Drawing.Size(150, 22);
+            this.textBoxAutovoksalName.TabIndex = 6;
+            // 
+            // buttonAddAutovoksal
+            // 
+            this.buttonAddAutovoksal.Location = new System.Drawing.Point(1200, 69);
+            this.buttonAddAutovoksal.Name = "buttonAddAutovoksal";
+            this.buttonAddAutovoksal.Size = new System.Drawing.Size(153, 50);
+            this.buttonAddAutovoksal.TabIndex = 7;
+            this.buttonAddAutovoksal.Text = "Добавить автокозал";
+            this.buttonAddAutovoksal.UseVisualStyleBackColor = true;
+            this.buttonAddAutovoksal.Click += new System.EventHandler(this.buttonAddAutovoksal_Click);
+            // 
+            // buttonDeleteAutovoksal
+            // 
+            this.buttonDeleteAutovoksal.Location = new System.Drawing.Point(1200, 247);
+            this.buttonDeleteAutovoksal.Name = "buttonDeleteAutovoksal";
+            this.buttonDeleteAutovoksal.Size = new System.Drawing.Size(150, 34);
+            this.buttonDeleteAutovoksal.TabIndex = 8;
+            this.buttonDeleteAutovoksal.Text = "Удалить автовокзал";
+            this.buttonDeleteAutovoksal.UseVisualStyleBackColor = true;
+            this.buttonDeleteAutovoksal.Click += new System.EventHandler(this.buttonDeleteAutovoksal_Click_1);
+            // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1368, 601);
+            this.Controls.Add(this.buttonDeleteAutovoksal);
+            this.Controls.Add(this.buttonAddAutovoksal);
+            this.Controls.Add(this.textBoxAutovoksalName);
+            this.Controls.Add(this.Autovoksal);
+            this.Controls.Add(this.listBoxAutovoksal);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonSetGarmBus);
             this.Controls.Add(this.buttonSetBus);
@@ -121,6 +177,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -133,5 +190,10 @@
         private System.Windows.Forms.Button buttonTakeBus;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxNumber;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox listBoxAutovoksal;
+        private System.Windows.Forms.Label Autovoksal;
+        private System.Windows.Forms.TextBox textBoxAutovoksalName;
+        private System.Windows.Forms.Button buttonAddAutovoksal;
+        private System.Windows.Forms.Button buttonDeleteAutovoksal;
     }
 }
