@@ -59,9 +59,7 @@ namespace WindowsFormsBus
             DrawMarking(g);
             for (int i = 0; i < _places.Count; ++i)
             {
-                int x = i / (pictureHeight / _placeSizeHeight);
-                int y = i - x * (pictureHeight / _placeSizeHeight);
-                _places[i].SetPosition(x * _placeSizeWidth + 10, y * _placeSizeHeight + 5, pictureWidth, pictureHeight);
+                _places[i].SetPosition(i / (pictureHeight / _placeSizeHeight) * _placeSizeWidth + 5, i % (pictureHeight / _placeSizeHeight) * _placeSizeHeight + 5, pictureWidth, pictureHeight);
                 _places[i].DrawTransport(g);
             }
         }
