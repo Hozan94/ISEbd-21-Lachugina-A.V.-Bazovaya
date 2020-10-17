@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace WindowsFormsBus
 {
-    public partial class FormParking : Form
+    public partial class FormAutovoksal : Form
     {
-        private readonly ParkingCollection parkingCollection;
-        public FormParking()
+        private readonly AutovoksalCollection autovoksalCollection;
+        public FormAutovoksal()
         {
             InitializeComponent();
-            parkingCollection = new ParkingCollection(pictureBoxParking.Width, pictureBoxParking.Height);
+            autovoksalCollection = new AutovoksalCollection(pictureBoxAutovoksal.Width, pictureBoxAutovoksal.Height);
         }
         /// <summary>
         /// Заполнение listBoxLevels
@@ -25,9 +25,9 @@ namespace WindowsFormsBus
         {
             int index = listBoxAutovoksal.SelectedIndex;
             listBoxAutovoksal.Items.Clear();
-            for (int i = 0; i < parkingCollection.Keys.Count; i++)
+            for (int i = 0; i < autovoksalCollection.Keys.Count; i++)
             {
-                listBoxAutovoksal.Items.Add(parkingCollection.Keys[i]);
+                listBoxAutovoksal.Items.Add(autovoksalCollection.Keys[i]);
             }
             if (listBoxAutovoksal.Items.Count > 0 && (index == -1 || index >= listBoxAutovoksal.Items.Count))
             {
@@ -43,10 +43,10 @@ namespace WindowsFormsBus
         {
             if (listBoxAutovoksal.SelectedIndex > -1)
             {
-                Bitmap bmp = new Bitmap(pictureBoxParking.Width, pictureBoxParking.Height);
+                Bitmap bmp = new Bitmap(pictureBoxAutovoksal.Width, pictureBoxAutovoksal.Height);
                 Graphics gr = Graphics.FromImage(bmp);
-                parkingCollection[listBoxAutovoksal.SelectedItem.ToString()].Draw(gr);
-                pictureBoxParking.Image = bmp;
+                autovoksalCollection[listBoxAutovoksal.SelectedItem.ToString()].Draw(gr);
+                pictureBoxAutovoksal.Image = bmp;
             }
         }
         private void buttonAddAutovoksal_Click(object sender, EventArgs e)
@@ -56,7 +56,7 @@ namespace WindowsFormsBus
                 MessageBox.Show("Введите название парковки", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            parkingCollection.AddAutovoksal(textBoxAutovoksalName.Text);
+            autovoksalCollection.AddAutovoksal(textBoxAutovoksalName.Text);
             ReloadLevels();
         }
        
@@ -66,7 +66,7 @@ namespace WindowsFormsBus
             {
                 if (MessageBox.Show($"Удалить автовокзал {listBoxAutovoksal.SelectedItem.ToString()}?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    parkingCollection.DelAutovoksal(listBoxAutovoksal.SelectedItem.ToString());
+                    autovoksalCollection.DelAutovoksal(listBoxAutovoksal.SelectedItem.ToString());
                     ReloadLevels();
                     Draw();
                 }
@@ -81,7 +81,7 @@ namespace WindowsFormsBus
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     var bus = new Bus(100, 1000, dialog.Color);
-                    if (parkingCollection[listBoxAutovoksal.SelectedItem.ToString()] + bus)
+                    if (autovoksalCollection[listBoxAutovoksal.SelectedItem.ToString()] + bus)
                     { 
                         Draw();
                     }
@@ -104,7 +104,7 @@ namespace WindowsFormsBus
                     if (dialogDop.ShowDialog() == DialogResult.OK)
                     {
                         var bus = new BusGarm(100, 10000, dialog.Color, dialogDop.Color, true, true);
-                        if (parkingCollection[listBoxAutovoksal.SelectedItem.ToString()] + bus)
+                        if (autovoksalCollection[listBoxAutovoksal.SelectedItem.ToString()] + bus)
                         {
                             Draw();
                         }
@@ -120,7 +120,7 @@ namespace WindowsFormsBus
         {
             if (listBoxAutovoksal.SelectedIndex > -1 && maskedTextBoxNumber.Text != "")
             {
-                var bus = parkingCollection[listBoxAutovoksal.SelectedItem.ToString()] - Convert.ToInt32(maskedTextBoxNumber.Text);
+                var bus = autovoksalCollection[listBoxAutovoksal.SelectedItem.ToString()] - Convert.ToInt32(maskedTextBoxNumber.Text);
                 if (bus != null)
                 {
                     FormBus form = new FormBus();

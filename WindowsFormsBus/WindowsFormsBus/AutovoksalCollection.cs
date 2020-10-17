@@ -6,47 +6,47 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsBus
 {
-    class ParkingCollection
+    class AutovoksalCollection
     {
-        readonly Dictionary<string, Parking<EasyBus>> parkingStages;
+        readonly Dictionary<string, Autovoksal<EasyBus>> autovoksalStages;
 
-        public List<string> Keys => parkingStages.Keys.ToList();
+        public List<string> Keys => autovoksalStages.Keys.ToList();
 
         private readonly int pictureWidth;
 
         private readonly int pictureHeight;
 
-        public ParkingCollection(int pictureWidth, int pictureHeight)
+        public AutovoksalCollection(int pictureWidth, int pictureHeight)
         {
-            parkingStages = new Dictionary<string, Parking<EasyBus>>();
+            autovoksalStages = new Dictionary<string, Autovoksal<EasyBus>>();
             this.pictureWidth = pictureWidth;
             this.pictureHeight = pictureHeight;
         }
 
         public void AddAutovoksal(string name)
         {
-            if (parkingStages.ContainsKey(name))
+            if (autovoksalStages.ContainsKey(name))
             {
                 return;
             }
-            parkingStages.Add(name, new Parking<EasyBus>(pictureWidth, pictureHeight));
+            autovoksalStages.Add(name, new Autovoksal<EasyBus>(pictureWidth, pictureHeight));
         }
 
         public void DelAutovoksal(string name)
         {
-            if (parkingStages.ContainsKey(name))
+            if (autovoksalStages.ContainsKey(name))
             {
-                parkingStages.Remove(name);
+                autovoksalStages.Remove(name);
             }
         }
 
-        public Parking<EasyBus> this[string index]
+        public Autovoksal<EasyBus> this[string index]
         {
             get
             {
-                if (parkingStages.ContainsKey(index))
+                if (autovoksalStages.ContainsKey(index))
                 {
-                    return parkingStages[index];
+                    return autovoksalStages[index];
                 }
                 else
                 {

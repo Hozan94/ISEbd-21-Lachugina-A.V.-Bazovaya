@@ -11,7 +11,7 @@ namespace WindowsFormsBus
     /// Параметризованный класс для хранения набора объектов от интерфейса ITransport
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class Parking<T> where T : class, ITransport
+    public class Autovoksal<T> where T : class, ITransport
     {
         private readonly List<T> _places;
 
@@ -25,7 +25,7 @@ namespace WindowsFormsBus
 
         private readonly int _placeSizeHeight = 80;
 
-        public Parking(int picWidth, int picHeight)
+        public Autovoksal(int picWidth, int picHeight)
         {
             int width = picWidth / _placeSizeWidth;
             int height = picHeight / _placeSizeHeight;
@@ -35,7 +35,7 @@ namespace WindowsFormsBus
             _places = new List<T>();
         }
 
-        public static bool operator +(Parking<T> p, T bus)
+        public static bool operator +(Autovoksal<T> p, T bus)
         {
             if (p._places.Count >= p._maxCount)
                 return false;
@@ -44,7 +44,7 @@ namespace WindowsFormsBus
             return true;
         }
 
-        public static T operator -(Parking<T> p, int index)
+        public static T operator -(Autovoksal<T> p, int index)
         {
             if (index < -1 || index > p._places.Count)
                 return null;
