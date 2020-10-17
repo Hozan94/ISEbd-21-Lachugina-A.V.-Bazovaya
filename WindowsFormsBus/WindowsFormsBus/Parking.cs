@@ -11,7 +11,7 @@ namespace WindowsFormsBus
     /// Параметризованный класс для хранения набора объектов от интерфейса ITransport
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class Parking<T> where T : class, ITransport
+    public class Autovoksal<T> where T : class, ITransport
     {
         /// <summary>
         /// Массив объектов, которые храним
@@ -33,12 +33,8 @@ namespace WindowsFormsBus
         /// Размер парковочного места (высота)
         /// </summary>
         private readonly int _placeSizeHeight = 80;
-        /// <summary>
-        /// Конструктор
-        /// </summary>
-        /// <param name="picWidth">Рамзер парковки - ширина</param>
-        /// <param name="picHeight">Рамзер парковки - высота</param>
-        public Parking(int picWidth, int picHeight)
+     
+        public Autovoksal(int picWidth, int picHeight)
         {
             int width = picWidth / _placeSizeWidth;
             int height = picHeight / _placeSizeHeight;
@@ -46,14 +42,8 @@ namespace WindowsFormsBus
             pictureWidth = picWidth;
             pictureHeight = picHeight;
         }
-        /// <summary>
-        /// Перегрузка оператора сложения
-        /// Логика действия: на парковку добавляется автомобиль
-        /// </summary>
-        /// <param name="p">Парковка</param>
-        /// <param name="bus">Добавляемый автомобиль</param>
-        /// <returns></returns>
-        public static bool operator +(Parking<T> p, T bus)
+
+        public static bool operator +(Autovoksal<T> p, T bus)
         {
             for (int i = 0; i < p._places.Length; i++)
             {
@@ -66,14 +56,8 @@ namespace WindowsFormsBus
             }
             return false;
         }
-        /// <summary>
-        /// Перегрузка оператора вычитания
-        /// Логика действия: с парковки забираем автомобиль
-        /// </summary>
-        /// <param name="p">Парковка</param>
-        /// <param name="index">Индекс места, с которого пытаемся извлечь объект</param>
-        /// <returns></returns>
-        public static T operator -(Parking<T> p, int index)
+
+        public static T operator -(Autovoksal<T> p, int index)
         {
             if ((index < p._places.Length) && (index >= 0))
             {

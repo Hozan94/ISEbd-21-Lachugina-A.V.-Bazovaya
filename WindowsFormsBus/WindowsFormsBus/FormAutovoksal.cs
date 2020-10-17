@@ -10,22 +10,22 @@ using System.Windows.Forms;
 
 namespace WindowsFormsBus
 {
-    public partial class FormParking : Form
+    public partial class FormAutovoksal : Form
     {
-        private readonly Parking<EasyBus> parking;
-        public FormParking()
+        private readonly Autovoksal<EasyBus> autovoksal;
+        public FormAutovoksal()
         {
             InitializeComponent();
-            parking = new Parking<EasyBus>(pictureBoxParking.Width, pictureBoxParking.Height);
+            autovoksal = new Autovoksal<EasyBus>(pictureBoxAutovoksal.Width, pictureBoxAutovoksal.Height);
             Draw();
         }
 
         private void Draw()
         {
-            Bitmap bmp = new Bitmap(pictureBoxParking.Width, pictureBoxParking.Height);
+            Bitmap bmp = new Bitmap(pictureBoxAutovoksal.Width, pictureBoxAutovoksal.Height);
             Graphics gr = Graphics.FromImage(bmp);
-            parking.Draw(gr);
-            pictureBoxParking.Image = bmp;
+            autovoksal.Draw(gr);
+            pictureBoxAutovoksal.Image = bmp;
         }
 
         private void buttonSetBus_Click(object sender, EventArgs e)
@@ -34,7 +34,7 @@ namespace WindowsFormsBus
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 var bus = new Bus(100, 1000, dialog.Color);
-                if (parking + bus)
+                if (autovoksal + bus)
                 {
                     Draw();
                 }
@@ -54,7 +54,7 @@ namespace WindowsFormsBus
                 if (dialogDop.ShowDialog() == DialogResult.OK)
                 {
                     var bus = new BusGarm(100, 10000, dialog.Color, dialogDop.Color, true, true);
-                    if (parking + bus)
+                    if (autovoksal + bus)
                     {
                         Draw();
                     }
@@ -70,7 +70,7 @@ namespace WindowsFormsBus
         {
             if (maskedTextBoxNumber.Text != "")
             {
-                var bus = parking - Convert.ToInt32(maskedTextBoxNumber.Text);
+                var bus = autovoksal - Convert.ToInt32(maskedTextBoxNumber.Text);
                 if (bus != null)
                 {
                     FormBus form = new FormBus();

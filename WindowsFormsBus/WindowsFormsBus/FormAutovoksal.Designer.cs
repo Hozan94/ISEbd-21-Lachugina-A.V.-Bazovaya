@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsBus
 {
-    partial class FormParking
+    partial class FormAutovoksal
     {
         /// <summary>
         /// Required designer variable.
@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBoxParking = new System.Windows.Forms.PictureBox();
+            this.pictureBoxAutovoksal = new System.Windows.Forms.PictureBox();
             this.buttonSetBus = new System.Windows.Forms.Button();
             this.buttonSetGarmBus = new System.Windows.Forms.Button();
             this.groupBoxTakingBus = new System.Windows.Forms.GroupBox();
             this.buttonTakeBus = new System.Windows.Forms.Button();
             this.maskedTextBoxNumber = new System.Windows.Forms.MaskedTextBox();
             this.labelPlace = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAutovoksal)).BeginInit();
             this.groupBoxTakingBus.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pictureBoxParking
+            // pictureBoxAutovoksal
             // 
-            this.pictureBoxParking.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBoxParking.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxParking.Name = "pictureBoxParking";
-            this.pictureBoxParking.Size = new System.Drawing.Size(1141, 601);
-            this.pictureBoxParking.TabIndex = 0;
-            this.pictureBoxParking.TabStop = false;
+            this.pictureBoxAutovoksal.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBoxAutovoksal.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxAutovoksal.Name = "pictureBoxAutovoksal";
+            this.pictureBoxAutovoksal.Size = new System.Drawing.Size(1141, 601);
+            this.pictureBoxAutovoksal.TabIndex = 0;
+            this.pictureBoxAutovoksal.TabStop = false;
             // 
             // buttonSetBus
             // 
@@ -106,7 +106,7 @@
             this.labelPlace.TabIndex = 0;
             this.labelPlace.Text = "Место:";
             // 
-            // FormParking
+            // FormAutovoksal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -114,10 +114,10 @@
             this.Controls.Add(this.groupBoxTakingBus);
             this.Controls.Add(this.buttonSetGarmBus);
             this.Controls.Add(this.buttonSetBus);
-            this.Controls.Add(this.pictureBoxParking);
-            this.Name = "FormParking";
+            this.Controls.Add(this.pictureBoxAutovoksal);
+            this.Name = "FormAutovoksal";
             this.Text = "Автовокзал";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAutovoksal)).EndInit();
             this.groupBoxTakingBus.ResumeLayout(false);
             this.groupBoxTakingBus.PerformLayout();
             this.ResumeLayout(false);
@@ -126,7 +126,7 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBoxParking;
+        private System.Windows.Forms.PictureBox pictureBoxAutovoksal;
         private System.Windows.Forms.Button buttonSetBus;
         private System.Windows.Forms.Button buttonSetGarmBus;
         private System.Windows.Forms.GroupBox groupBoxTakingBus;
