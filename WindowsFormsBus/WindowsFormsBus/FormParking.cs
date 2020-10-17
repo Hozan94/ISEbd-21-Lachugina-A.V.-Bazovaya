@@ -19,6 +19,7 @@ namespace WindowsFormsBus
             parking = new Parking<EasyBus>(pictureBoxParking.Width, pictureBoxParking.Height);
             Draw();
         }
+
         private void Draw()
         {
             Bitmap bmp = new Bitmap(pictureBoxParking.Width, pictureBoxParking.Height);
@@ -26,6 +27,7 @@ namespace WindowsFormsBus
             parking.Draw(gr);
             pictureBoxParking.Image = bmp;
         }
+
         private void buttonSetBus_Click(object sender, EventArgs e)
         {
             ColorDialog dialog = new ColorDialog();
