@@ -23,7 +23,7 @@ namespace WindowsFormsBus
             this.pictureHeight = pictureHeight;
         }
 
-        public void AddParking(string name)
+        public void AddAutovoksal(string name)
         {
             if (parkingStages.ContainsKey(name))
             {
@@ -32,7 +32,7 @@ namespace WindowsFormsBus
             parkingStages.Add(name, new Parking<EasyBus>(pictureWidth, pictureHeight));
         }
 
-        public void DelParking(string name)
+        public void DelAutovoksal(string name)
         {
             if (parkingStages.ContainsKey(name))
             {

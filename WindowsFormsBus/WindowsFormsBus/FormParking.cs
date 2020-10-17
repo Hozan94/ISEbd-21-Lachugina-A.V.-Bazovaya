@@ -53,11 +53,10 @@ namespace WindowsFormsBus
         {
             if (string.IsNullOrEmpty(textBoxAutovoksalName.Text))
             {
-                MessageBox.Show("Введите название парковки", "Ошибка",
-               MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Введите название парковки", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            parkingCollection.AddParking(textBoxAutovoksalName.Text);
+            parkingCollection.AddAutovoksal(textBoxAutovoksalName.Text);
             ReloadLevels();
         }
        
@@ -65,9 +64,9 @@ namespace WindowsFormsBus
         {
             if (listBoxAutovoksal.SelectedIndex > -1)
             {
-                if (MessageBox.Show($"Удалить парковку {listBoxAutovoksal.SelectedItem.ToString()}?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show($"Удалить автовокзал {listBoxAutovoksal.SelectedItem.ToString()}?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    parkingCollection.DelParking(listBoxAutovoksal.SelectedItem.ToString());
+                    parkingCollection.DelAutovoksal(listBoxAutovoksal.SelectedItem.ToString());
                     ReloadLevels();
                     Draw();
                 }
@@ -121,8 +120,7 @@ namespace WindowsFormsBus
         {
             if (listBoxAutovoksal.SelectedIndex > -1 && maskedTextBoxNumber.Text != "")
             {
-                var bus = parkingCollection[listBoxAutovoksal.SelectedItem.ToString()] -
-               Convert.ToInt32(maskedTextBoxNumber.Text);
+                var bus = parkingCollection[listBoxAutovoksal.SelectedItem.ToString()] - Convert.ToInt32(maskedTextBoxNumber.Text);
                 if (bus != null)
                 {
                     FormBus form = new FormBus();
