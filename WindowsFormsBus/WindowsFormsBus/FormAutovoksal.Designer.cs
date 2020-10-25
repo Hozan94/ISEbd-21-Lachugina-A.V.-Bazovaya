@@ -161,7 +161,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1368, 601);
+            this.ClientSize = new System.Drawing.Size(1359, 601);
             this.Controls.Add(this.buttonDeleteAutovoksal);
             this.Controls.Add(this.buttonAddAutovoksal);
             this.Controls.Add(this.textBoxAutovoksalName);
