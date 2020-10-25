@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 
 namespace WindowsFormsBus
-{
+{ 
     /// <summary>
     /// Параметризованный класс для хранения набора объектов от интерфейса ITransport
     /// </summary>
