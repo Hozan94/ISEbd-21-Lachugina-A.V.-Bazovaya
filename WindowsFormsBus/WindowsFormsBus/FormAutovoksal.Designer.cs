@@ -110,7 +110,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1101, 601);
+            this.ClientSize = new System.Drawing.Size(1078, 601);
             this.Controls.Add(this.groupBoxTakingBus);
             this.Controls.Add(this.buttonSetGarmBus);
             this.Controls.Add(this.buttonSetBus);
