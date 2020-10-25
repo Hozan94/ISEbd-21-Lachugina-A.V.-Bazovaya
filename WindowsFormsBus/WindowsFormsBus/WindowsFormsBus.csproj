@@ -46,31 +46,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Autovoksal.cs" />
+    <Compile Include="AutovoksalCollection.cs" />
     <Compile Include="BusGarm.cs" />
     <Compile Include="Bus.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="EasyBus.cs" />
+    <Compile Include="FormAutovoksal.cs" />
+    <Compile Include="FormAutovoksal.designer.cs">
+      <DependentUpon>FormAutovoksal.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormBus.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormBus.Designer.cs">
       <DependentUpon>FormBus.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAutovoksal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormAutovoksal.Designer.cs">
-      <DependentUpon>FormAutovoksal.cs</DependentUpon>
-    </Compile>
     <Compile Include="ITransport.cs" />
-    <Compile Include="Autovoksal.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormBus.resx">
-      <DependentUpon>FormBus.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormAutovoksal.resx">
       <DependentUpon>FormAutovoksal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormBus.resx">
+      <DependentUpon>FormBus.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
