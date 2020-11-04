@@ -135,6 +135,27 @@ namespace WindowsFormsBus
         {
             Draw();
         }
+        private void AddBus(EasyBus bus)
+        {
+            if (bus != null && listBoxAutovoksal.SelectedIndex > -1)
+            {
+                if ((autovoksalCollection[listBoxAutovoksal.SelectedItem.ToString()]) + bus)
+                {
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Автобус не удалось поставить");
+                }
+            }
+        }
+
+        private void buttonAddBus_Click_1(object sender, EventArgs e)
+        {
+            var formBusConfig = new FormBusConfig();
+            formBusConfig.addBus += AddBus;
+            formBusConfig.Show();
+        }
     }
 }
     

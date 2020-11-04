@@ -79,5 +79,9 @@ namespace WindowsFormsBus
                 g.FillEllipse(white, _startPosX + 150, _startPosY + 52, 13, 13);
             }
         }
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;
+        }
     }
 }

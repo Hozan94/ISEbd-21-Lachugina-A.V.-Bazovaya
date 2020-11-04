@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.pictureBoxAutovoksal = new System.Windows.Forms.PictureBox();
-            this.buttonSetBus = new System.Windows.Forms.Button();
-            this.buttonSetGarmBus = new System.Windows.Forms.Button();
             this.groupBoxTakingBus = new System.Windows.Forms.GroupBox();
             this.buttonTakeBus = new System.Windows.Forms.Button();
             this.maskedTextBoxNumber = new System.Windows.Forms.MaskedTextBox();
@@ -40,6 +38,7 @@
             this.textBoxAutovoksalName = new System.Windows.Forms.TextBox();
             this.buttonAddAutovoksal = new System.Windows.Forms.Button();
             this.buttonDeleteAutovoksal = new System.Windows.Forms.Button();
+            this.buttonAddBus = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAutovoksal)).BeginInit();
             this.groupBoxTakingBus.SuspendLayout();
             this.SuspendLayout();
@@ -52,26 +51,6 @@
             this.pictureBoxAutovoksal.Size = new System.Drawing.Size(1141, 601);
             this.pictureBoxAutovoksal.TabIndex = 0;
             this.pictureBoxAutovoksal.TabStop = false;
-            // 
-            // buttonSetBus
-            // 
-            this.buttonSetBus.Location = new System.Drawing.Point(1200, 305);
-            this.buttonSetBus.Name = "buttonSetBus";
-            this.buttonSetBus.Size = new System.Drawing.Size(150, 51);
-            this.buttonSetBus.TabIndex = 1;
-            this.buttonSetBus.Text = "Припарковать автобус";
-            this.buttonSetBus.UseVisualStyleBackColor = true;
-            this.buttonSetBus.Click += new System.EventHandler(this.buttonSetBus_Click);
-            // 
-            // buttonSetGarmBus
-            // 
-            this.buttonSetGarmBus.Location = new System.Drawing.Point(1200, 362);
-            this.buttonSetGarmBus.Name = "buttonSetGarmBus";
-            this.buttonSetGarmBus.Size = new System.Drawing.Size(150, 64);
-            this.buttonSetGarmBus.TabIndex = 2;
-            this.buttonSetGarmBus.Text = "Припарковать автобус с гармошкой";
-            this.buttonSetGarmBus.UseVisualStyleBackColor = true;
-            this.buttonSetGarmBus.Click += new System.EventHandler(this.buttonSetGarmBus_Click_1);
             // 
             // groupBoxTakingBus
             // 
@@ -157,19 +136,28 @@
             this.buttonDeleteAutovoksal.UseVisualStyleBackColor = true;
             this.buttonDeleteAutovoksal.Click += new System.EventHandler(this.buttonDeleteAutovoksal_Click_1);
             // 
+            // buttonAddBus
+            // 
+            this.buttonAddBus.Location = new System.Drawing.Point(1203, 380);
+            this.buttonAddBus.Name = "buttonAddBus";
+            this.buttonAddBus.Size = new System.Drawing.Size(144, 53);
+            this.buttonAddBus.TabIndex = 9;
+            this.buttonAddBus.Text = "Добавить автобус";
+            this.buttonAddBus.UseVisualStyleBackColor = true;
+            this.buttonAddBus.Click += new System.EventHandler(this.buttonAddBus_Click_1);
+            // 
             // FormAutovoksal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1359, 601);
+            this.Controls.Add(this.buttonAddBus);
             this.Controls.Add(this.buttonDeleteAutovoksal);
             this.Controls.Add(this.buttonAddAutovoksal);
             this.Controls.Add(this.textBoxAutovoksalName);
             this.Controls.Add(this.Autovoksal);
             this.Controls.Add(this.listBoxAutovoksal);
             this.Controls.Add(this.groupBoxTakingBus);
-            this.Controls.Add(this.buttonSetGarmBus);
-            this.Controls.Add(this.buttonSetBus);
             this.Controls.Add(this.pictureBoxAutovoksal);
             this.Name = "FormAutovoksal";
             this.Text = "Автовокзал";
@@ -184,8 +172,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxAutovoksal;
-        private System.Windows.Forms.Button buttonSetBus;
-        private System.Windows.Forms.Button buttonSetGarmBus;
         private System.Windows.Forms.GroupBox groupBoxTakingBus;
         private System.Windows.Forms.Button buttonTakeBus;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxNumber;
@@ -195,5 +181,6 @@
         private System.Windows.Forms.TextBox textBoxAutovoksalName;
         private System.Windows.Forms.Button buttonAddAutovoksal;
         private System.Windows.Forms.Button buttonDeleteAutovoksal;
+        private System.Windows.Forms.Button buttonAddBus;
     }
 }
