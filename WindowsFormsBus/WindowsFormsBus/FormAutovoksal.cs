@@ -153,7 +153,7 @@ namespace WindowsFormsBus
         private void buttonAddBus_Click_1(object sender, EventArgs e)
         {
             var formBusConfig = new FormBusConfig();
-            formBusConfig.addBus += AddBus;
+            formBusConfig.AddEvent(AddBus);
             formBusConfig.Show();
         }
     }

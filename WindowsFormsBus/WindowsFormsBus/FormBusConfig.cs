@@ -13,10 +13,18 @@ namespace WindowsFormsBus
     public partial class FormBusConfig : Form
     {
         EasyBus bus = null;
-        public event Action<EasyBus> addBus;
+        private event Action<EasyBus> AddBus;
         public FormBusConfig()
         {
             InitializeComponent();
+            this.panelBlue.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelColor_MouseDown);
+            this.panelDarkViolet.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelColor_MouseDown);
+            this.panelPink.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelColor_MouseDown);
+            this.panelLightBlue.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelColor_MouseDown);
+            this.panelGreen.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelColor_MouseDown);
+            this.panelYellow.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelColor_MouseDown);
+            this.panelDarkOrange.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelColor_MouseDown);
+            this.panelRed.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelColor_MouseDown);
             buttonFalse.Click += (object sender, EventArgs e) => { Close(); };
         }
         private void DrawBus()
@@ -31,12 +39,24 @@ namespace WindowsFormsBus
             }
         }
 
-        private void buttonAdd_Click(object sender, EventArgs e)
+        /// <param name="ev"></param>
+        public void AddEvent(Action<EasyBus> ev)
         {
-            addBus?.Invoke(bus);
-            Close();
+            if (AddBus == null)
+            {
+                AddBus = new Action<EasyBus>(ev);
+            }
+            else
+            {
+                AddBus += ev;
+            }
         }
 
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            AddBus?.Invoke(bus);
+            Close();
+        }
         private void labelBus_MouseDown(object sender, MouseEventArgs e)
         {
             labelBus.DoDragDrop(labelBus.Text, DragDropEffects.Move | DragDropEffects.Copy);
@@ -74,12 +94,13 @@ namespace WindowsFormsBus
         }
         private void panelColor_MouseDown(object sender, MouseEventArgs e)
         {
-            ((Panel)sender).DoDragDrop(((Panel)sender).BackColor.Name, DragDropEffects.Move | DragDropEffects.Copy);
+            Color color = (sender as Panel).BackColor;
+            (sender as Panel).DoDragDrop(color, DragDropEffects.Move | DragDropEffects.Copy);
         }
 
         private void labelMain_DragEnter(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.Text.ToString()))
+            if (e.Data.GetDataPresent(typeof(Color)))
             {
                 e.Effect = DragDropEffects.Copy;
             }
@@ -90,24 +111,18 @@ namespace WindowsFormsBus
         }
 
         private void labelMain_DragDrop(object sender, DragEventArgs e)
-        {
-            if (bus != null)
-            {
-                bus.SetMainColor(Color.FromName(e.Data.GetData(DataFormats.Text).ToString()));
-                DrawBus();
-            }
+        {      
+                bus.SetMainColor((Color)e.Data.GetData(typeof(Color)));
+                DrawBus();         
         }
 
         private void labelDop_DragDrop(object sender, DragEventArgs e)
         {
-            if (bus is BusGarm && bus != null)
+            if (bus is BusGarm)
             {
-                (bus as BusGarm).SetDopColor(Color.FromName(e.Data.GetData(DataFormats.Text).ToString()));
+                (bus as BusGarm).SetDopColor((Color)e.Data.GetData(typeof(Color)));
                 DrawBus();
             }
         }
-
-
-
     }
 }

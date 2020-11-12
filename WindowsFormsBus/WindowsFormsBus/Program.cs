@@ -6,7 +6,6 @@ using System.Windows.Forms;
 
 namespace WindowsFormsBus
 {
-    public delegate void BusDelegate(EasyBus bus);
     static class Program
     {
         /// <summary>
