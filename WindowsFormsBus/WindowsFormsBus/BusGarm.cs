@@ -43,6 +43,23 @@ namespace WindowsFormsBus
             Garmoshka = garmoshka;
             ThirdOs = thirdOs;
         }
+        /// <summary>
+        /// Конструктор для загрузки с файла
+        /// </summary>
+        /// <param name="info"></param>
+        public BusGarm(string info) : base(info)
+        {
+            string[] strs = info.Split(separator);
+            if (strs.Length == 6)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+                DopColor = Color.FromName(strs[3]);
+                Garmoshka = Convert.ToBoolean(strs[4]);
+                ThirdOs = Convert.ToBoolean(strs[5]);
+            }
+        }
 
         public override void DrawTransport(Graphics g)
         {
@@ -83,5 +100,9 @@ namespace WindowsFormsBus
         {
             DopColor = color;
         }
+        public override string ToString()
+        {
+            return
+           $"{base.ToString()}{separator}{DopColor.Name}{separator}{Garmoshka}{separator}{ThirdOs}";}
     }
 }

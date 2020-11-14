@@ -18,6 +18,10 @@ namespace WindowsFormsBus
         /// </summary>
         protected readonly int busHeight = 68;
         /// <summary>
+        /// Разделитель для записи информации по объекту в файл
+        /// </summary>
+        protected readonly char separator = ';';
+        /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="maxSpeed">Максимальная скорость</param>
@@ -29,6 +33,21 @@ namespace WindowsFormsBus
             Weight = weight;
             MainColor = mainColor;
         }
+        /// <summary>
+        /// Конструктор для загрузки с файла
+        /// </summary>
+        /// <param name="info">Информация по объекту</param>
+        public Bus(string info)
+        {
+            string[] strs = info.Split(separator);
+            if (strs.Length == 3)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+            }
+        }
+
         /// <summary>
         /// Конструктор с изменением размеров автобуса
         /// </summary>
@@ -128,6 +147,10 @@ namespace WindowsFormsBus
 
             //отрисуем фару
             g.FillRectangle(fara, _startPosX + 30, _startPosY + 48, 9, 5);
+        }
+        public override string ToString()
+        {
+            return $"{MaxSpeed}{separator}{Weight}{separator}{MainColor.Name}";
         }
     }
 }

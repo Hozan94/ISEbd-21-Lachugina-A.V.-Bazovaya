@@ -59,7 +59,7 @@ namespace WindowsFormsBus
             autovoksalCollection.AddAutovoksal(textBoxAutovoksalName.Text);
             ReloadLevels();
         }
-       
+
         private void buttonDeleteAutovoksal_Click_1(object sender, EventArgs e)
         {
             if (listBoxAutovoksal.SelectedIndex > -1)
@@ -72,7 +72,7 @@ namespace WindowsFormsBus
                 }
             }
         }
-        
+
         private void buttonSetBus_Click(object sender, EventArgs e)
         {
             if (listBoxAutovoksal.SelectedIndex > -1)
@@ -82,10 +82,10 @@ namespace WindowsFormsBus
                 {
                     var bus = new Bus(100, 1000, dialog.Color);
                     if (autovoksalCollection[listBoxAutovoksal.SelectedItem.ToString()] + bus)
-                    { 
+                    {
                         Draw();
                     }
-                else
+                    else
                     {
                         MessageBox.Show("Парковка переполнена");
                     }
@@ -155,6 +155,42 @@ namespace WindowsFormsBus
             var formBusConfig = new FormBusConfig();
             formBusConfig.AddEvent(AddBus);
             formBusConfig.Show();
+        }
+
+        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                if (autovoksalCollection.SaveData(saveFileDialog.FileName))
+                {
+                    MessageBox.Show("Сохранение прошло успешно", "Результат",
+                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Не сохранилось", "Результат",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                if (autovoksalCollection.LoadData(openFileDialog.FileName))
+                {
+                    MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
+                   MessageBoxIcon.Information);
+                    ReloadLevels();
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
