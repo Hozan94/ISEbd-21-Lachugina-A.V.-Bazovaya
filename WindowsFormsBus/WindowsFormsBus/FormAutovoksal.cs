@@ -166,7 +166,7 @@ namespace WindowsFormsBus
                     if ((autovoksalCollection[listBoxAutovoksal.SelectedItem.ToString()]) + bus)
                     {
                         Draw();
-                        logger.Info($"Добавлен автомобиль {bus}");
+                        logger.Info($"Добавлен автобус {bus}");
                     }
                     else
                     {
