@@ -38,7 +38,9 @@ namespace WindowsFormsBus
         public static bool operator +(Autovoksal<T> p, T bus)
         {
             if (p._places.Count >= p._maxCount)
-                return false;
+            {
+                throw new AutovoksalOverflowException();
+            }
 
             p._places.Add(bus);
             return true;
@@ -47,7 +49,9 @@ namespace WindowsFormsBus
         public static T operator -(Autovoksal<T> p, int index)
         {
             if (index < -1 || index > p._places.Count)
-                return null;
+            {
+                throw new AutovoksalNotFoundException(index);
+            }
 
             T bus = p._places[index];
             p._places.RemoveAt(index);

@@ -7,16 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NLog;
 
 namespace WindowsFormsBus
 {
     public partial class FormAutovoksal : Form
     {
         private readonly AutovoksalCollection autovoksalCollection;
+        /// <summary>
+        /// Логгер
+        /// </summary>
+        private readonly Logger logger;
         public FormAutovoksal()
         {
             InitializeComponent();
             autovoksalCollection = new AutovoksalCollection(pictureBoxAutovoksal.Width, pictureBoxAutovoksal.Height);
+            logger = LogManager.GetCurrentClassLogger();
         }
         /// <summary>
         /// Заполнение listBoxLevels
@@ -56,6 +62,7 @@ namespace WindowsFormsBus
                 MessageBox.Show("Введите название парковки", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            logger.Info($"Добавили автовокзал {textBoxAutovoksalName.Text}");
             autovoksalCollection.AddAutovoksal(textBoxAutovoksalName.Text);
             ReloadLevels();
         }
@@ -66,6 +73,7 @@ namespace WindowsFormsBus
             {
                 if (MessageBox.Show($"Удалить автовокзал {listBoxAutovoksal.SelectedItem.ToString()}?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    logger.Info($"Удалили парковку{listBoxAutovoksal.SelectedItem.ToString()}");
                     autovoksalCollection.DelAutovoksal(listBoxAutovoksal.SelectedItem.ToString());
                     ReloadLevels();
                     Draw();
@@ -120,17 +128,31 @@ namespace WindowsFormsBus
         {
             if (listBoxAutovoksal.SelectedIndex > -1 && maskedTextBoxNumber.Text != "")
             {
-                var bus = autovoksalCollection[listBoxAutovoksal.SelectedItem.ToString()] - Convert.ToInt32(maskedTextBoxNumber.Text);
-                if (bus != null)
+                try
                 {
-                    FormBus form = new FormBus();
-                    form.SetBus(bus);
-                    form.ShowDialog();
+                    var bus = autovoksalCollection[listBoxAutovoksal.SelectedItem.ToString()] - Convert.ToInt32(maskedTextBoxNumber.Text);
+                    if (bus != null)
+                    {
+                        FormBus form = new FormBus();
+                        form.SetBus(bus);
+                        form.ShowDialog();
+                        logger.Info($"Изъят автобус {bus} с места{maskedTextBoxNumber.Text}");
+                        Draw();
+                    }
                 }
-                Draw();
+                catch (AutovoksalNotFoundException ex)
+                {
+                    MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
-
+    
         private void listBoxAutovoksal_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();
@@ -139,16 +161,31 @@ namespace WindowsFormsBus
         {
             if (bus != null && listBoxAutovoksal.SelectedIndex > -1)
             {
-                if ((autovoksalCollection[listBoxAutovoksal.SelectedItem.ToString()]) + bus)
+                try
                 {
+                    if ((autovoksalCollection[listBoxAutovoksal.SelectedItem.ToString()]) + bus)
+                    {
+                        Draw();
+                        logger.Info($"Добавлен автомобиль {bus}");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Автобус не удалось поставить");
+                    }
                     Draw();
                 }
-                else
+                catch (AutovoksalOverflowException ex)
                 {
-                    MessageBox.Show("Автобус не удалось поставить");
+                    MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        }
+        }       
 
         private void buttonAddBus_Click_1(object sender, EventArgs e)
         {
@@ -161,16 +198,19 @@ namespace WindowsFormsBus
         {
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (autovoksalCollection.SaveData(saveFileDialog.FileName))
+                try
                 {
+                    autovoksalCollection.SaveData(saveFileDialog.FileName);
                     MessageBox.Show("Сохранение прошло успешно", "Результат",
-                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Сохранено в файл " + saveFileDialog.FileName);
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Не сохранилось", "Результат",
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
             }
         }
 
@@ -178,20 +218,28 @@ namespace WindowsFormsBus
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (autovoksalCollection.LoadData(openFileDialog.FileName))
+                try
                 {
+                    autovoksalCollection.LoadData(openFileDialog.FileName);
                     MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
-                   MessageBoxIcon.Information);
+                    MessageBoxIcon.Information);
+                    logger.Info("Загружено из файла " + openFileDialog.FileName);
                     ReloadLevels();
                     Draw();
                 }
-                else
+                catch (AutovoksalOccupiedPlaceException ex)
                 {
-                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK,
+                    MessageBox.Show(ex.Message, "Занятое место", MessageBoxButtons.OK,
                    MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
     }
 }
+
     
