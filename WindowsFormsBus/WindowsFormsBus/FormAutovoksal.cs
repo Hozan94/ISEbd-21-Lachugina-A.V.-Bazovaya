@@ -59,7 +59,7 @@ namespace WindowsFormsBus
         {
             if (string.IsNullOrEmpty(textBoxAutovoksalName.Text))
             {
-                MessageBox.Show("Введите название парковки", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Введите название автовокзала", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             logger.Info($"Добавили автовокзал {textBoxAutovoksalName.Text}");
@@ -73,7 +73,7 @@ namespace WindowsFormsBus
             {
                 if (MessageBox.Show($"Удалить автовокзал {listBoxAutovoksal.SelectedItem.ToString()}?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    logger.Info($"Удалили парковку{listBoxAutovoksal.SelectedItem.ToString()}");
+                    logger.Info($"Удалили автовокзал{listBoxAutovoksal.SelectedItem.ToString()}");
                     autovoksalCollection.DelAutovoksal(listBoxAutovoksal.SelectedItem.ToString());
                     ReloadLevels();
                     Draw();
@@ -81,49 +81,6 @@ namespace WindowsFormsBus
             }
         }
 
-        private void buttonSetBus_Click(object sender, EventArgs e)
-        {
-            if (listBoxAutovoksal.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    var bus = new Bus(100, 1000, dialog.Color);
-                    if (autovoksalCollection[listBoxAutovoksal.SelectedItem.ToString()] + bus)
-                    {
-                        Draw();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Парковка переполнена");
-                    }
-                }
-            }
-        }
-
-        private void buttonSetGarmBus_Click_1(object sender, EventArgs e)
-        {
-            if (listBoxAutovoksal.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    ColorDialog dialogDop = new ColorDialog();
-                    if (dialogDop.ShowDialog() == DialogResult.OK)
-                    {
-                        var bus = new BusGarm(100, 10000, dialog.Color, dialogDop.Color, true, true);
-                        if (autovoksalCollection[listBoxAutovoksal.SelectedItem.ToString()] + bus)
-                        {
-                            Draw();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Автовокзал переполнен");
-                        }
-                    }
-                }
-            }
-        }
         private void buttonTakeBus_Click_1(object sender, EventArgs e)
         {
             if (listBoxAutovoksal.SelectedIndex > -1 && maskedTextBoxNumber.Text != "")
@@ -144,11 +101,13 @@ namespace WindowsFormsBus
                 {
                     MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK,
                    MessageBoxIcon.Error);
+                    logger.Warn($"{ex.Message} Не найдено");
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Неизвестная ошибка",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Warn($"{ex.Message} Неизвестная ошибка");
                 }
             }
         }
@@ -156,6 +115,7 @@ namespace WindowsFormsBus
         private void listBoxAutovoksal_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();
+            logger.Info($"Перешли на автовокзал{ listBoxAutovoksal.SelectedItem.ToString()}");
         }
         private void AddBus(EasyBus bus)
         {
@@ -171,6 +131,7 @@ namespace WindowsFormsBus
                     else
                     {
                         MessageBox.Show("Автобус не удалось поставить");
+                        logger.Warn($"Автобус не удалось поставить");
                     }
                     Draw();
                 }
@@ -178,11 +139,13 @@ namespace WindowsFormsBus
                 {
                     MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,
                    MessageBoxIcon.Error);
+                    logger.Warn($"{ex.Message} Переполнение");
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Неизвестная ошибка",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Warn($"{ex.Message} Неизвестная ошибка");
                 }
             }
         }       
@@ -209,6 +172,7 @@ namespace WindowsFormsBus
                 {
                     MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Warn($"{ex.Message} Неизвестная ошибка при сохранении");
                 }
 
             }
@@ -231,11 +195,13 @@ namespace WindowsFormsBus
                 {
                     MessageBox.Show(ex.Message, "Занятое место", MessageBoxButtons.OK,
                    MessageBoxIcon.Error);
+                    logger.Warn($"{ex.Message} Занятое место");
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Warn($"{ex.Message} Неизвестная ошибка при загрузке");
                 }
             }
         }
